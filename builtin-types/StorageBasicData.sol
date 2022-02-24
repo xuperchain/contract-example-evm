@@ -8,6 +8,11 @@ contract StorageBasicData {
     bytes32 storedBytes;
     string storedString;
 
+    int storedInt;
+    int[] storedIntArr;
+    bytes storedBytesAuto;
+    address[] storedAddrArr;
+
     uint[] arrays;
 
 //    string[] arraysStr;
@@ -15,6 +20,53 @@ contract StorageBasicData {
     constructor() public{
         storedUint = 12345;
     }
+
+    // int
+    function setInt(int x) public{
+        storedInt = x;
+    }
+
+    function getInt() view public returns(int retInt){
+        return storedInt;
+    }
+
+    //int[]
+    function setIntArr(int[] memory x) public{
+        uint len = x.length;
+        uint i = 0;
+        for(i=0;i<len;i++){
+            storedIntArr.push(x[i]);
+        }
+    }
+
+    function getIntArr() view public returns(int[] memory){
+        return storedIntArr;
+    }
+
+
+    // bytes
+    function setBytesAuto(bytes memory x) public {
+        storedBytesAuto = x;
+    }
+
+    function getBytesAuto() view public returns(bytes memory retBytesAuto){
+        return storedBytesAuto;
+    }
+
+
+    //address[]
+    function setAddrArr(address[] memory x) public{
+        uint len = x.length;
+        uint i = 0;
+        for(i=0; i < len; i++){
+            storedAddrArr.push(x[i]);
+        }
+    }
+
+    function getAddrArr() view public returns(address[] memory){
+        return storedAddrArr;
+    }
+
 
     function setUints(uint[] memory uintArrays) public{
         uint len = uintArrays.length;
